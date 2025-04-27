@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 const allowedOrigins = ["http://localhost:5173", "https://checkout.stripe.com"];
 const YOUR_DOMAIN = "http://localhost:5173";
 
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
 app.use(
   cors({
     origin: function (origin, callback) {
