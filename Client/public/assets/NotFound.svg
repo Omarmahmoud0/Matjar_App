@@ -1,0 +1,53 @@
+<svg width="280" height="280" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    #floating-elements {
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    #magnifying-glass {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes dash {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+    #search-path {
+      stroke-dasharray: 50;
+      stroke-dashoffset: 50;
+      animation: dash 3s linear infinite;
+    }
+  </style>
+
+  <!-- Floating Elements Group -->
+  <g id="floating-elements">
+    <!-- Shopping Bag -->
+    <path d="M70 80V50C70 33.4315 83.4315 20 100 20H140C156.569 20 170 33.4315 170 50V80" stroke="#b4c6fc" stroke-width="4"/>
+    <rect x="50" y="80" width="140" height="120" rx="10" fill="#6875f5"/>
+    <path d="M70 80H170" stroke="#b4c6fc" stroke-width="4"/>
+
+    <!-- 404 Text -->
+    <text x="120" y="150" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff" text-anchor="middle">404</text>
+  </g>
+
+  <!-- Magnifying Glass -->
+  <g id="magnifying-glass">
+    <circle cx="160" cy="180" r="30" fill="rgba(255, 255, 255, 0.59)" stroke="#8da2fb" stroke-width="4"/>
+    <line x1="137.343" y1="202.343" x2="117.343" y2="222.343" stroke="#8da2fb" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Search Path -->
+
+  <!-- Decorative Elements -->
+  <circle cx="30" cy="30" r="6" fill="#7DD3FC"/>
+  <circle cx="210" cy="50" r="6" fill="#7DD3FC"/>
+  <path d="M20 200L30 210M30 200L20 210" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M200 20L210 30M210 20L200 30" stroke="#7DD3FC" stroke-width="2" stroke-linecap="round"/>
+</svg>
