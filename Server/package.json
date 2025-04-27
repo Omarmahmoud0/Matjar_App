@@ -5,10 +5,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "react-scripts": "^5.0.1",
     "stripe": "^17.5.0"
   },
   "scripts": {
-    "build": "react-scripts build"
+    "start": "node server.js",
+    "build": "echo 'No build needed for backend'"
   }
 }
