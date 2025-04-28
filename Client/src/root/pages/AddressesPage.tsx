@@ -3,7 +3,7 @@ import AddressCard from "@/components/shared/AddressCard";
 import BackButton from "@/components/shared/BackButton";
 import PageLoader from "@/components/shared/PageLoader";
 import { AuthUserContext } from "@/context/UserContextProvider";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import { useGetAddress } from "@/lib/reactQuery/qusersAndMutation";
 import AddIcon from "@mui/icons-material/Add";
 import { useEffect, useState } from "react";

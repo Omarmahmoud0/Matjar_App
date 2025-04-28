@@ -32,7 +32,7 @@ import {
   useGetProduct,
 } from "@/lib/reactQuery/qusersAndMutation";
 import { useNavigate, useParams } from "react-router-dom";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";

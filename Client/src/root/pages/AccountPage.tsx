@@ -3,7 +3,7 @@ import Loader from "@/components/shared/Loader";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StripeCustomer } from "@/context/StripeCustomerContext";
 import { AuthUserContext } from "@/context/UserContextProvider";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import { useLogOutUser } from "@/lib/reactQuery/qusersAndMutation";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";

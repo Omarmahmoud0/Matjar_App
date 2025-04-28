@@ -1,4 +1,4 @@
-import { auth, db } from "@/lib/appwrite/firebase";
+import { auth, db } from "@/lib/firebase/firebase";
 import { IContextType, IUser } from "@/types/types";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";

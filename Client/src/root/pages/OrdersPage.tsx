@@ -2,7 +2,7 @@ import BackButton from "@/components/shared/BackButton";
 import PageLoader from "@/components/shared/PageLoader";
 import YourOrdersCard from "@/components/shared/YourOrdersCard";
 import { StripeCustomer } from "@/context/StripeCustomerContext";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import { useGetOrdersCustomer } from "@/lib/reactQuery/qusersAndMutation";
 import { useEffect } from "react";
 const OrdersPage = () => {

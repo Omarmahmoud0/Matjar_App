@@ -9,7 +9,7 @@ import {
 } from "@/lib/reactQuery/qusersAndMutation";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import Loader from "@/components/shared/Loader";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import ProductCategory from "@/components/shared/ProductCategory";
 import AnimatedSelect from "@/components/shared/AnimatedSelect";
 import Leftbar from "@/components/shared/Leftbar";

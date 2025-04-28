@@ -21,7 +21,7 @@ import { ToastStyel, ToastStyelFaild } from "../RootLayot";
 import { Link, useNavigate } from "react-router-dom";
 import { StripeCustomer } from "@/context/StripeCustomerContext";
 import PageLoader from "@/components/shared/PageLoader";
-import { TopPage } from "@/lib/appwrite/api";
+import { TopPage } from "@/lib/firebase/api";
 import { AuthUserContext } from "@/context/UserContextProvider";
 import { ILocalStorgeItems } from "@/types/types";
 import { useAuthFormContext } from "@/context/AuthFromContext";

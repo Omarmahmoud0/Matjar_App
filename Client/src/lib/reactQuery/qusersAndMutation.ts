@@ -24,7 +24,7 @@ import {
   Signup,
   updateAddress,
   updateProductCartQty,
-} from "../appwrite/api";
+} from "../firebase/api";
 import { AddDoc, AuthForm, INewAddress, IUpdateAddress } from "@/types/types";
 
 export function useRegisterUser() {
@@ -42,6 +42,9 @@ export function useLogInUser() {
 export function useLogOutUser() {
   return useMutation({
     mutationFn: () => LogOut(),
+    onSuccess: () => {
+      window.location.reload();
+    },
   });
 }
 
