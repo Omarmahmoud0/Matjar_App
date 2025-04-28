@@ -8,8 +8,12 @@ const path = require("path");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = ["http://localhost:5173", "https://checkout.stripe.com"];
-const YOUR_DOMAIN = "http://localhost:5173";
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://checkout.stripe.com",
+  "https://matjar-app.vercel.app",
+];
+const YOUR_DOMAIN = "https://matjar-app.vercel.app";
 
 app.use(
   cors({
