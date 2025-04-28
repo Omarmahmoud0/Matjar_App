@@ -103,7 +103,10 @@ app.post("/checkout", async (req, res) => {
       },
     });
 
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173"); // Set to specific origin
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://matjar-app.vercel.app"
+    ); // Set to specific origin
     res.setHeader("Access-Control-Allow-Credentials", "true"); // Allow credentials
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -130,7 +133,10 @@ app.post("/account/orders/:customerId", async (req, res) => {
     const invoices = await stripe.invoices.list({
       customer: customerId,
     });
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173"); // Set to specific origin
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://matjar-app.vercel.app"
+    ); // Set to specific origin
     res.setHeader("Access-Control-Allow-Credentials", "true"); // Allow credentials
     res.setHeader(
       "Access-Control-Allow-Methods",
