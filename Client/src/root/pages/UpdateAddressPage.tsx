@@ -69,7 +69,7 @@ const UpdateAddressPage = () => {
   });
 
   async function onSubmit(values: FormValues) {
-    if (findAddressPrimary) {
+    if (address && address?.length > 1 && findAddressPrimary) {
       setTimeout(async () => {
         await UpdateAddress({
           fullName: findAddressPrimary.fullName,

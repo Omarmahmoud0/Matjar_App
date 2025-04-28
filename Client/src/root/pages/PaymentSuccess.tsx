@@ -20,7 +20,7 @@ const PaymentSuccess = () => {
       const fetchSessionData = async () => {
         try {
           const response = await fetch(
-            `http://localhost:4242/session/${sessionId}`,
+            `https://matjarapp-production.up.railway.app/session/${sessionId}`,
             {
               method: "POST",
               headers: {

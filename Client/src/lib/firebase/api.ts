@@ -427,7 +427,7 @@ export async function createCustomerStripe(customer: {
   name: string;
 }) {
   try {
-    const res = await fetch("http://localhost:4242/create-customer", {
+    const res = await fetch("https://matjarapp-production.up.railway.app/create-customer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: customer.email, name: customer.name }),
@@ -443,7 +443,7 @@ export async function createCustomerStripe(customer: {
 
 export async function getCustomerStripe(email: string) {
   try {
-    const res = await fetch("http://localhost:4242/find-customer", {
+    const res = await fetch("https://matjarapp-production.up.railway.app/find-customer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email }),
@@ -460,7 +460,7 @@ export async function getCustomerStripe(email: string) {
 export async function getOrdersCustomer(customerId: string) {
   try {
     const res = await fetch(
-      `http://localhost:4242/account/orders/${customerId}`,
+      `https://matjarapp-production.up.railway.app/account/orders/${customerId}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -488,7 +488,7 @@ export async function handelCheckout({
       const stripe = await loadStripe(
         import.meta.env.VITE_STRIPE_PUBLIC_PUBLISHABLE_KEY
       );
-      const res = await fetch("http://localhost:4242/checkout", {
+      const res = await fetch("https://matjarapp-production.up.railway.app/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
