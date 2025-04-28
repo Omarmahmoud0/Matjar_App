@@ -5,19 +5,11 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const allowedOrigins = ["http://localhost:5173", "https://checkout.stripe.com"];
 const YOUR_DOMAIN = "http://localhost:5173";
-
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
 
 app.use(
   cors({
