@@ -118,7 +118,7 @@ export default function CategoryPage() {
         </div>
         <div className="mb-6 space-y-4">
           <nav className="flex" aria-label="Breadcrumb">
-            <ol className="inline-flex items-center space-x-1 md:space-x-3 max-md:text-xs">
+            <ol className="inline-flex items-center space-x-1 md:space-x-3 max-md:text-xs md:text-lg sm:text-base max-sm:text-sm">
               <li className="inline-flex items-center">
                 <Link to="/" className="text-gray-700 hover:text-blue-600">
                   Home
@@ -141,7 +141,7 @@ export default function CategoryPage() {
             </ol>
           </nav>
           <div className="flex flex-wrap justify-between items-center gap-4">
-            <h1 className="text-2xl font-bold dark:text-white capitalize max-md:text-sm">
+            <h1 className="md:text-2xl font-bold dark:text-white capitalize sm:text-lg max-sm:text-base">
               {section} ({handleSortingProducts?.length})
             </h1>
             <div className="flex items-center space-x-2">
