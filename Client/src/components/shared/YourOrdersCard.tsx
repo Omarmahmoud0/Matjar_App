@@ -80,7 +80,7 @@ const YourOrdersCard = ({ order }: { order: any }) => {
                 <h3 className="font-semibold mb-3 text-black ">Items</h3>
                 <ul className="space-y-3">
                   {order?.lines.data.map((item: any) => (
-                    <li key={item.id} className="flex justify-between">
+                    <li key={item.id} className="flex justify-between gap-1">
                       <div>
                         <p className="font-medium capitalize text-black text-sm">
                           {item.description}
@@ -89,7 +89,7 @@ const YourOrdersCard = ({ order }: { order: any }) => {
                           Qty: {item.quantity}
                         </p>
                       </div>
-                      <p className="font-medium text-black">
+                      <p className="font-medium text-indigo-500">
                         ${item.amount / Number(100)}
                       </p>
                     </li>

@@ -9,15 +9,17 @@ import {
 } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Mail, ArrowRight, User, Building, Phone, MapPin } from "lucide-react";
+import { ArrowRight, User, Building, Phone, MapPin } from "lucide-react";
 import { SessionData } from "@/types/types";
 import DetailsAddress from "./DetailsAddress";
+import { AuthUserContext } from "@/context/UserContextProvider";
 
 export default function Order({
   sessionData,
 }: {
   sessionData: SessionData | null;
 }) {
+  const { user } = AuthUserContext();
   return (
     <div className="flex flex-col items-center justify-center w-full p-4">
       <Card className="w-full shadow-lg bg-white">
@@ -54,10 +56,8 @@ export default function Order({
           </CardTitle>
           <CardDescription className="md:text-lg sm:text-base max-xs:text-sm text-gray-600">
             Thank you for your purchase,{" "}
-            <span className="text-indigo-500">
-              {sessionData?.invoice.customer_name}
-            </span>
-            . Your order has been confirmed.
+            <span className="text-indigo-500">{user.name}</span>. Your order has
+            been confirmed.
           </CardDescription>
         </CardHeader>
         <CardContent className="md:space-y-8 max-md:space-y-4 max-md:px-3">
@@ -98,17 +98,6 @@ export default function Order({
                 label="Street Address"
                 key={4}
               />
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm">
-              <Mail className="h-6 w-6 text-blue-500" />
-              <span className="md:text-lg text-sm text-gray-600">
-                A confirmation email has been sent to{" "}
-                <span className="font-semibold text-gray-900">
-                  {sessionData?.invoice.customer_email}
-                </span>
-              </span>
             </div>
           </div>
         </CardContent>

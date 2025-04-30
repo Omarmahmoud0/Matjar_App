@@ -422,16 +422,20 @@ export async function searchForProducts(search: string) {
   }
 }
 
+// Stripe functions //
 export async function createCustomerStripe(customer: {
   email: string;
   name: string;
 }) {
   try {
-    const res = await fetch("https://matjarapp-production.up.railway.app/create-customer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: customer.email, name: customer.name }),
-    });
+    const res = await fetch(
+      "https://matjarapp-production.up.railway.app/create-customer",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: customer.email, name: customer.name }),
+      }
+    );
     const data = await res.json();
     const customerId = data.customerId;
     console.log(customerId);
@@ -443,11 +447,14 @@ export async function createCustomerStripe(customer: {
 
 export async function getCustomerStripe(email: string) {
   try {
-    const res = await fetch("https://matjarapp-production.up.railway.app/find-customer", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: email }),
-    });
+    const res = await fetch(
+      "https://matjarapp-production.up.railway.app/find-customer",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
+      }
+    );
     const data = await res.json();
     const customerId = data.customerId;
     if (!customerId) throw Error("not found Customer id");
@@ -474,6 +481,24 @@ export async function getOrdersCustomer(customerId: string) {
   }
 }
 
+export async function getSessionData(sessionId: string) {
+  try {
+    const res = await fetch(
+      `https://matjarapp-production.up.railway.app/session/${sessionId}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (res.status === 404) throw Error("not found session id");
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("Session Error", error);
+  }
+}
+// Stripe functions //
+
 export async function handelCheckout({
   cart,
   customerId,
@@ -488,13 +513,16 @@ export async function handelCheckout({
       const stripe = await loadStripe(
         import.meta.env.VITE_STRIPE_PUBLIC_PUBLISHABLE_KEY
       );
-      const res = await fetch("https://matjarapp-production.up.railway.app/checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cart: cart, customerId, address: address }),
-      });
+      const res = await fetch(
+        "https://matjarapp-production.up.railway.app/checkout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ cart: cart, customerId, address: address }),
+        }
+      );
 
       if (res.status === 500) return;
 

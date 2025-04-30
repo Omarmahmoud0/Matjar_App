@@ -353,7 +353,7 @@ export default function ProfessionalShoppingCart() {
                 </div>
               </div>
               <Button
-                className="w-full bg-indigo-500 hover:bg-indigo-600 text-white"
+                className="w-full bg-indigo-500 hover:bg-indigo-600 text-white uppercase"
                 size="lg"
                 onClick={handelCheckout}
               >

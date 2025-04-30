@@ -17,6 +17,7 @@ import {
   getOrdersCustomer,
   getProductByID,
   getRecommendedProduct,
+  getSessionData,
   handelCheckout,
   Login,
   LogOut,
@@ -203,6 +204,7 @@ export function useSearchForProducts(search: string) {
   });
 }
 
+// Stripe functions //
 export function useCreateCustomerStripe() {
   const queryClient = useQueryClient();
   return useMutation({
@@ -229,6 +231,15 @@ export function useGetOrdersCustomer(customerId: string) {
     enabled: !!customerId,
   });
 }
+
+export function useGetSessionData(sessionId: string) {
+  return useQuery({
+    queryKey: ["sessionData", sessionId],
+    queryFn: () => getSessionData(sessionId),
+    enabled: !!sessionId,
+  });
+}
+// Stripe functions //
 
 export function useHandelCheckout() {
   const queryClient = useQueryClient();

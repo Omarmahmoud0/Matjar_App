@@ -118,7 +118,7 @@ const App = () => {
             }
           />
           <Route
-            path="/success"
+            path="/success/:sessionId"
             element={
               <Suspense fallback={<PageLoader />}>
                 <PathProtection>

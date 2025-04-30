@@ -1,5 +1,3 @@
-import { Models } from "appwrite";
-
 export type ILinks = {
   label: string;
   path: string;
@@ -134,12 +132,6 @@ export interface IAddToCart {
   userId: string;
   productId: string;
   quantity: number;
-}
-
-export interface CartDocuments {
-  currentUser: Models.Document | undefined;
-  isPending: boolean;
-  isSuccess?: boolean;
 }
 
 export interface SessionData {
