@@ -67,7 +67,7 @@ export default function Order({
             <h3 className="md:text-xl text-base font-semibold text-gray-900">
               Order Number:{" "}
               <span className="text-indigo-500">
-                {sessionData?.session?.invoice}
+                {sessionData?.session?.payment_intent}
               </span>
             </h3>
           </div>

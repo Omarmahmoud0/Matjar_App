@@ -136,7 +136,7 @@ export interface IAddToCart {
 
 export interface SessionData {
   session: {
-    invoice: string;
+    payment_intent: string;
     customer_details: {
       name: string;
     };
