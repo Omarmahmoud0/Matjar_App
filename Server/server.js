@@ -66,7 +66,6 @@ app.post("/find-customer", async (req, res) => {
 app.post("/checkout", async (req, res) => {
   const { customerId } = req.body;
   try {
-    console.log("Requset", req.body);
     const session = await stripe.checkout.sessions.create({
       submit_type: "pay",
       mode: "payment",
@@ -92,7 +91,7 @@ app.post("/checkout", async (req, res) => {
           quantity: item.qty,
         };
       }),
-      success_url: `${YOUR_DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${YOUR_DOMAIN}/success/{CHECKOUT_SESSION_ID}`,
       cancel_url: `${YOUR_DOMAIN}/cart`,
       customer: customerId,
       metadata: {
@@ -127,7 +126,6 @@ app.post("/checkout", async (req, res) => {
 
 app.post("/account/orders/:customerId", async (req, res) => {
   const { customerId } = req.params;
-  console.log(customerId);
 
   try {
     const invoices = await stripe.invoices.list({
@@ -155,20 +153,21 @@ app.post("/account/orders/:customerId", async (req, res) => {
 
 app.post("/session/:sessionId", async (req, res) => {
   const { sessionId } = req.params;
+  console.log("Session ID:", sessionId);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
     const paymentIntent = await stripe.paymentIntents.retrieve(
       session.payment_intent
     );
+    let invoice = null;
 
-    if (paymentIntent.invoice) {
-      const invoice = await stripe.invoices.retrieve(paymentIntent.invoice);
+    if (session) {
+      invoice = await stripe.invoices.retrieve(paymentIntent.invoice);
       res.json({
         session,
         invoice,
       });
-      console.log("Invoice", invoice + "session", session);
     }
   } catch (error) {
     console.error("Error fetching session:", error);
