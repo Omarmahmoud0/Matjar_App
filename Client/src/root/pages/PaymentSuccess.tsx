@@ -18,8 +18,8 @@ const PaymentSuccess = () => {
   const { data: sessionData, isFetching } = useGetSessionData(sessionId!);
   console.log("session", sessionData);
 
-  const status = sessionData?.session.status;
-  const paymentStatus = sessionData?.session.payment_status;
+  const status = sessionData?.session?.status;
+  const paymentStatus = sessionData?.session?.payment_status;
 
   useEffect(() => {
     const ClearFn = async () => {
