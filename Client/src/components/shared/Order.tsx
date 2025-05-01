@@ -12,14 +12,14 @@ import { motion } from "framer-motion";
 import { ArrowRight, User, Building, Phone, MapPin } from "lucide-react";
 import { SessionData } from "@/types/types";
 import DetailsAddress from "./DetailsAddress";
-import { AuthUserContext } from "@/context/UserContextProvider";
+import { StripeCustomer } from "@/context/StripeCustomerContext";
 
 export default function Order({
   sessionData,
 }: {
   sessionData: SessionData | null;
 }) {
-  const { user } = AuthUserContext();
+  const customerId = StripeCustomer();
   return (
     <div className="flex flex-col items-center justify-center w-full p-4">
       <Card className="w-full shadow-lg bg-white">
@@ -56,8 +56,10 @@ export default function Order({
           </CardTitle>
           <CardDescription className="md:text-lg sm:text-base max-xs:text-sm text-gray-600">
             Thank you for your purchase,{" "}
-            <span className="text-indigo-500">{user.name}</span>. Your order has
-            been confirmed.
+            <span className="text-indigo-500 md:text-xl sm:text-lg max-xs:text-base">
+              {sessionData?.session?.customer_details?.name}
+            </span>
+            . Your order has been confirmed.
           </CardDescription>
         </CardHeader>
         <CardContent className="md:space-y-8 max-md:space-y-4 max-md:px-3">
@@ -65,7 +67,7 @@ export default function Order({
             <h3 className="md:text-xl text-base font-semibold text-gray-900">
               Order Number:{" "}
               <span className="text-indigo-500">
-                {sessionData?.invoice.number}
+                {sessionData?.session?.invoice}
               </span>
             </h3>
           </div>
@@ -76,25 +78,25 @@ export default function Order({
             <div className="grid md:grid-cols-2 gap-6">
               <DetailsAddress
                 Icon={User}
-                details={sessionData?.session.metadata.fullName}
+                details={sessionData?.session?.metadata?.fullName}
                 label="Full Name"
                 key={1}
               />
               <DetailsAddress
                 Icon={Building}
-                details={sessionData?.session.metadata.city}
+                details={sessionData?.session?.metadata?.city}
                 label="City"
                 key={2}
               />
               <DetailsAddress
                 Icon={Phone}
-                details={sessionData?.session.metadata.phone}
+                details={sessionData?.session?.metadata?.phone}
                 label="Phone Number"
                 key={3}
               />
               <DetailsAddress
                 Icon={MapPin}
-                details={sessionData?.session.metadata.address}
+                details={sessionData?.session?.metadata?.address}
                 label="Street Address"
                 key={4}
               />
@@ -117,10 +119,7 @@ export default function Order({
             className="bg-gradient-to-r from-indigo-400 to-indigo-500 hover:from-indigo-500 hover:to-indigo-700 text-white"
             asChild
           >
-            <Link
-              to={`${sessionData?.invoice.hosted_invoice_url}`}
-              replace={true}
-            >
+            <Link to={`/account/orders/${customerId}`} replace={true}>
               View Order Details
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

@@ -135,13 +135,11 @@ export interface IAddToCart {
 }
 
 export interface SessionData {
-  invoice: {
-    customer_name: string;
-    customer_email: string;
-    hosted_invoice_url: string;
-    number: string;
-  };
   session: {
+    invoice: string;
+    customer_details: {
+      name: string;
+    };
     status: string;
     payment_status: string;
     id: string;

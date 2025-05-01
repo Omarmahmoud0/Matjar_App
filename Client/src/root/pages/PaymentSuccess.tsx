@@ -15,7 +15,7 @@ const PaymentSuccess = () => {
   const { token } = AuthUserContext();
   const { Cart } = useCart();
   const { sessionId } = useParams();
-  const { data: sessionData, isFetching } = useGetSessionData(sessionId!);
+  const { data: sessionData, isPending } = useGetSessionData(sessionId!);
   console.log("session", sessionData);
 
   const status = sessionData?.session?.status;
@@ -32,9 +32,13 @@ const PaymentSuccess = () => {
         console.log(error);
       }
     };
-    window.scrollTo({ top: 150, behavior: "smooth" });
+
     if (!token) {
       navigate("/");
+    } else {
+      if (window.innerWidth > 768) {
+        window.scrollTo({ top: 150, behavior: "smooth" });
+      }
     }
     ClearFn();
   }, [token, status, paymentStatus, Cart]);
@@ -44,7 +48,7 @@ const PaymentSuccess = () => {
       className="md:container w-full min-h-screen mt-3 rounded-lg  bg-gradient-to-br from-green-50 to-blue-50
       dark:bg-gray-900 dark:bg-none flex items-center "
     >
-      {isFetching ? <PageLoader /> : <Order sessionData={sessionData} />}
+      {isPending ? <PageLoader /> : <Order sessionData={sessionData} />}
     </div>
   );
 };

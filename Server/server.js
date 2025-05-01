@@ -153,22 +153,12 @@ app.post("/account/orders/:customerId", async (req, res) => {
 
 app.post("/session/:sessionId", async (req, res) => {
   const { sessionId } = req.params;
-  console.log("Session ID:", sessionId);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(sessionId);
-    const paymentIntent = await stripe.paymentIntents.retrieve(
-      session.payment_intent
-    );
-    let invoice = null;
-
-    if (session) {
-      invoice = await stripe.invoices.retrieve(paymentIntent.invoice);
-      res.json({
-        session,
-        invoice,
-      });
-    }
+    res.json({
+      session,
+    });
   } catch (error) {
     console.error("Error fetching session:", error);
     res.status(500).json({ error: "Failed to fetch session data" });
